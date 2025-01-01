@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'com.galatea.frontend.Main'
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes(
+                'Main-Class': mainClassName
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+group = 'com.galatea.frontend'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.jetbrains:annotations:24.0.0'
+    implementation 'com.formdev:flatlaf:3.1'
+    implementation 'com.formdev:flatlaf-extras:3.1'
+    implementation 'com.miglayout:miglayout-core:5.3'
+    implementation 'com.miglayout:miglayout-swing:5.3'
+    implementation 'com.github.weisj:jsvg:1.6.1'
+}
+
+test {
+    useJUnitPlatform()
+}
