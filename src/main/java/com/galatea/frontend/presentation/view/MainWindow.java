@@ -18,6 +18,7 @@ package com.galatea.frontend.presentation.view;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.galatea.frontend.presentation.controller.ModelPanelController;
 import com.galatea.frontend.presentation.model.ProjectData;
 import com.galatea.frontend.presentation.controller.MenuController;
 import com.galatea.frontend.presentation.controller.SetupController;
@@ -40,6 +41,8 @@ public class MainWindow extends JFrame {
     private JTabbedPane tabbedPane;
     private StatusBarPanel statusBar;
 
+    private ModelContainerPanel modelContainerPanel;
+
     public MainWindow(ProjectData projectData) {
         this.projectData = projectData;
         initComponents();
@@ -54,8 +57,10 @@ public class MainWindow extends JFrame {
         setupPanel = new SetupPanel();
         statusBar = new StatusBarPanel();
 
+        modelContainerPanel = new ModelContainerPanel();
+
         tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("Models", new JPanel());
+        tabbedPane.addTab("Models", modelContainerPanel);
 
         JPanel containerPanel = new JPanel();
 
@@ -151,6 +156,30 @@ public class MainWindow extends JFrame {
                 button.addActionListener(setupController);
             }
         }
+    }
+
+    public void registerModelContainerController(ModelPanelController modelPanelController) {
+        for (Component component : modelContainerPanel.getComponents()) {
+            if (component instanceof JPanel panel) {
+                for (Component item : panel.getComponents()) {
+                    if (item instanceof AbstractButton button) {
+                        button.addActionListener(modelPanelController);
+                    }
+                }
+            }
+        }
+    }
+
+    public void addModelPanel() {
+        modelContainerPanel.addModelPanel();
+    }
+
+    public void deleteModelPanel() {
+
+    }
+
+    public void deleteOperationPanel() {
+
     }
 
     public void build() {

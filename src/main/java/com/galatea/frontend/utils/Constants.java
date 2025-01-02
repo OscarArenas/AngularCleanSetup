@@ -33,7 +33,7 @@ public class Constants {
     public static final int MIN_LENGTH_INPUT = 3;
     public static final String[] HTTP_METHODS = {"GET", "POST", "PUT", "DELETE"};
     public static final String[] COMPONENTS_TYPES = {"", "Header", "Header + Button", "Filter", "Filter + Button", "Table with pagination", "Table without pagination", "Form", "Modal"};
-    public static final ImageIcon DELETE_ICON = new ImageIcon("C:/Users/oscar.h.arenas/Documents/SpringBootProjects/AngularCleanSetup/src/main/resources/icons/icons/trash.png");
+    public static final ImageIcon DELETE_ICON = new ImageIcon("C:/Users/oscar.h.arenas/Documents/SpringBootProjects/AngularCleanSetup/src/main/resources/icons/trash.png");
     public static final String REGEX = "^[a-z]+(-[a-z]+)*$";
 
     static {

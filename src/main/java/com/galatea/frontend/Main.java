@@ -1,6 +1,7 @@
 package com.galatea.frontend;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.galatea.frontend.presentation.controller.ModelPanelController;
 import com.galatea.frontend.presentation.controller.StatusBarController;
 import com.galatea.frontend.presentation.model.ProjectData;
 import com.galatea.frontend.presentation.view.MainWindow;
@@ -29,11 +30,13 @@ public class Main {
                 = new StatusBarController(mainWindow);
         SetupController setupController
                 = new SetupController(mainWindow);
+        ModelPanelController modelPanelController = new ModelPanelController(mainWindow);
 
         // Register controllers
         mainWindow.registerMenuController(menuController);
         mainWindow.registerStatusBarController(statusBarController);
         mainWindow.registerSetupController(setupController);
+        mainWindow.registerModelContainerController(modelPanelController);
 
         mainWindow.setVisible(true);
     }
